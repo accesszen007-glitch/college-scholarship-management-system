@@ -1,25 +1,250 @@
-<form onsubmit="loginDemo(event)">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <label>Email</label>
-    <input type="email" required>
+    <title>Login | ScholarEase</title>
 
-    <br><br>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
 
-    <label>Password</label>
-    <input type="password" required>
+<body>
 
-    <br><br>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="nav-container">
 
-    <button type="submit">Login</button>
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🎓</span>
+                <span>Scholar<span>Ease</span></span>
+            </a>
 
-</form>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="scholarships.html">Scholarships</a>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#about">About</a>
+                <a href="login.html" class="active">Login</a>
+                <a href="register.html" class="nav-register">Register</a>
+            </nav>
 
-<script>
-function loginDemo(event) {
+            <button
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+                ☰
+            </button>
 
-    event.preventDefault();
+        </div>
+    </header>
 
-    window.location.href = "student-dashboard.html";
 
-}
-</script>
+    <!-- Login Section -->
+    <main class="auth-page">
+
+        <div class="auth-container">
+
+            <!-- Left Information -->
+            <section class="auth-info">
+
+                <span class="auth-badge">
+                    🎓 Student Portal
+                </span>
+
+                <h1>
+                    Welcome back to
+                    <span>ScholarEase</span>
+                </h1>
+
+                <p>
+                    Sign in to discover scholarship opportunities,
+                    manage your applications, and track your progress.
+                </p>
+
+                <div class="auth-benefits">
+
+                    <div class="auth-benefit">
+                        <div class="benefit-icon">🔍</div>
+                        <div>
+                            <h3>Find Opportunities</h3>
+                            <p>Discover scholarships that match your profile.</p>
+                        </div>
+                    </div>
+
+                    <div class="auth-benefit">
+                        <div class="benefit-icon">📝</div>
+                        <div>
+                            <h3>Apply Online</h3>
+                            <p>Submit scholarship applications easily.</p>
+                        </div>
+                    </div>
+
+                    <div class="auth-benefit">
+                        <div class="benefit-icon">📊</div>
+                        <div>
+                            <h3>Track Applications</h3>
+                            <p>Stay updated on your application status.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Login Card -->
+            <section class="auth-card">
+
+                <div class="auth-card-header">
+                    <h2>Sign in</h2>
+                    <p>Enter your account details to continue.</p>
+                </div>
+
+                <form id="loginForm">
+
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class="input"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required>
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <div class="input-label-row">
+                            <label for="password">Password</label>
+
+                            <a href="#" class="forgot-password">
+                                Forgot password?
+                            </a>
+                        </div>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                class="input"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required>
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="passwordToggle"
+                                aria-label="Show password">
+                                👁
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="remember-row">
+
+                        <label class="checkbox-label">
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                                name="rememberMe">
+
+                            <span>Remember me</span>
+                        </label>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary auth-submit">
+                        Sign In
+                    </button>
+
+                    <div id="loginMessage" class="auth-message"></div>
+
+                </form>
+
+
+                <div class="auth-divider">
+                    <span>New to ScholarEase?</span>
+                </div>
+
+                <a
+                    href="register.html"
+                    class="btn btn-secondary auth-register">
+                    Create an Account
+                </a>
+
+
+                <div class="security-note">
+                    <span>🔒</span>
+
+                    <p>
+                        Your account information is protected
+                        with secure authentication.
+                    </p>
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🎓</span>
+                    <span>Scholar<span>Ease</span></span>
+                </a>
+
+                <p>
+                    Making scholarship opportunities easier
+                    and more accessible for students.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="scholarships.html">Scholarships</a>
+                <a href="register.html">Register</a>
+                <a href="admin-login.html">Admin</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                © <span class="current-year">2026</span>
+                ScholarEase. All rights reserved.
+            </p>
+        </div>
+
+    </footer>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+
+</body>
+</html>
