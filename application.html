@@ -1,0 +1,23 @@
+<form onsubmit="submitApplication(event)">
+
+    <!-- your application fields -->
+
+    <button type="submit">
+        Submit Application
+    </button>
+
+</form>
+
+<script>
+
+function submitApplication(event) {
+
+    event.preventDefault();
+
+    alert("Application submitted successfully!");
+
+    window.location.href = "tracking.html";
+
+}
+
+</script>
