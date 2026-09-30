@@ -1,0 +1,3450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ScholarEase - Scholarship Management System</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: #0b1c30;
+    background: #f8f9ff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+/* =========================
+   COLORS
+========================= */
+
+:root {
+    --blue: #004ac6;
+    --blue-dark: #00358f;
+    --teal: #006b5f;
+    --navy: #0b1c30;
+    --text: #434655;
+    --muted: #697386;
+    --border: #e4e8ef;
+    --white: #ffffff;
+    --bg: #f8f9ff;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 76px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5vw;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    background: #e5edff;
+    border-radius: 12px;
+
+    font-size: 22px;
+}
+
+.brand strong {
+    display: block;
+    font-family: "Plus Jakarta Sans";
+    font-size: 17px;
+}
+
+.brand small {
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+}
+
+.nav-links a {
+    font-size: 13px;
+    color: #555d6d;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--blue);
+}
+
+.nav-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    border: none;
+    padding: 11px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.btn-primary {
+    color: white;
+    background: var(--blue);
+}
+
+.btn-primary:hover {
+    background: var(--blue-dark);
+}
+
+.btn-outline {
+    background: white;
+    border: 1px solid #cfd5df;
+    color: #344054;
+}
+
+.btn-outline:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.btn-large {
+    padding: 14px 23px;
+}
+
+.menu-toggle {
+    display: none;
+    border: 0;
+    background: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    max-width: 1200px;
+    margin: auto;
+
+    min-height: 650px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 50px;
+    align-items: center;
+
+    padding: 70px 25px;
+}
+
+.hero-copy {
+    max-width: 560px;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 7px 13px;
+
+    background: #e9efff;
+    color: var(--blue);
+
+    border-radius: 30px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: "Plus Jakarta Sans";
+    font-size: 50px;
+    line-height: 1.12;
+    letter-spacing: -1.8px;
+}
+
+.hero h1 span {
+    color: var(--blue);
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 16px;
+    margin: 20px 0;
+    max-width: 530px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.trust-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: #667085;
+    font-size: 10px;
+}
+
+.trust-row i {
+    width: 4px;
+    height: 4px;
+    background: #a7afbc;
+    border-radius: 50%;
+}
+
+/* =========================
+   HERO DASHBOARD
+========================= */
+
+.hero-visual {
+    position: relative;
+    min-height: 470px;
+
+    display: grid;
+    place-items: center;
+}
+
+.dashboard-window {
+    width: 100%;
+    max-width: 530px;
+
+    background: white;
+
+    border: 1px solid #dfe4ed;
+    border-radius: 18px;
+
+    box-shadow: 0 30px 70px rgba(11,28,48,.15);
+
+    overflow: hidden;
+
+    position: relative;
+    z-index: 2;
+}
+
+.window-top {
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 15px;
+
+    border-bottom: 1px solid var(--border);
+
+    color: #7b8493;
+    font-size: 10px;
+
+    gap: 12px;
+}
+
+.window-dots {
+    display: flex;
+    gap: 4px;
+}
+
+.window-dots i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ccd2dc;
+}
+
+.avatar {
+    margin-left: auto;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--blue);
+    color: white;
+
+    font-size: 10px;
+}
+
+.mini-dashboard {
+    display: grid;
+    grid-template-columns: 125px 1fr;
+    min-height: 350px;
+}
+
+.mini-dashboard aside {
+    background: #f8f9ff;
+    border-right: 1px solid var(--border);
+
+    padding: 18px 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.mini-logo {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.mini-dashboard aside span {
+    font-size: 9px;
+    padding: 9px;
+    color: #7a8291;
+    border-radius: 7px;
+}
+
+.mini-dashboard aside .active {
+    background: #dfe7ff;
+    color: var(--blue);
+    font-weight: 700;
+}
+
+.mini-main {
+    padding: 25px;
+}
+
+.mini-welcome {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mini-welcome small {
+    color: #8a92a0;
+    font-size: 8px;
+}
+
+.mini-welcome h3 {
+    font-family: "Plus Jakarta Sans";
+    font-size: 20px;
+}
+
+.mini-profile {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: var(--blue);
+    color: white;
+
+    display: grid;
+    place-items: center;
+}
+
+.mini-stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 8px;
+
+    margin: 25px 0;
+}
+
+.mini-stats div {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.mini-stats small {
+    display: block;
+    color: #8a92a0;
+    font-size: 8px;
+}
+
+.mini-stats strong {
+    font-family: "Plus Jakarta Sans";
+    font-size: 22px;
+}
+
+.scholarship-preview {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    padding: 13px;
+}
+
+.preview-icon {
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    background: #e9efff;
+    border-radius: 10px;
+}
+
+.scholarship-preview small,
+.scholarship-preview span {
+    display: block;
+    font-size: 8px;
+    color: #8a92a0;
+}
+
+.scholarship-preview strong {
+    display: block;
+    font-size: 10px;
+}
+
+.scholarship-preview button {
+    margin-left: auto;
+
+    border: 0;
+    background: var(--blue);
+    color: white;
+
+    padding: 7px 11px;
+    border-radius: 6px;
+
+    font-size: 8px;
+}
+
+.float-card {
+    position: absolute;
+
+    background: white;
+
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    box-shadow: 0 12px 35px rgba(11,28,48,.15);
+
+    font-size: 10px;
+    font-weight: 600;
+
+    z-index: 4;
+}
+
+.submitted {
+    left: 0;
+    top: 70px;
+    color: #18834b;
+}
+
+.verified {
+    right: -10px;
+    bottom: 100px;
+    color: #18834b;
+}
+
+.new-scholarship {
+    right: 20px;
+    top: 35px;
+    color: var(--blue);
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats-section {
+    max-width: 1150px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+
+    gap: 15px;
+
+    padding: 20px 25px 70px;
+}
+
+.stat-card {
+    background: white;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    padding: 22px;
+
+    min-height: 140px;
+}
+
+.stat-icon {
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 9px;
+
+    margin-bottom: 13px;
+}
+
+.blue {
+    background: #e5edff;
+    color: var(--blue);
+}
+
+.teal {
+    background: #e0f7f2;
+    color: var(--teal);
+}
+
+.orange {
+    background: #fff1db;
+    color: #996100;
+}
+
+.purple {
+    background: #eee8ff;
+    color: #6c45b8;
+}
+
+.stat-card strong {
+    display: block;
+
+    font-family: "Plus Jakarta Sans";
+    font-size: 25px;
+}
+
+.stat-card p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 80px 25px;
+}
+
+.light-section {
+    max-width: none;
+    background: #f1f4ff;
+}
+
+.light-section > * {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+
+    margin-bottom: 35px;
+}
+
+.section-heading > div {
+    max-width: 600px;
+}
+
+.eyebrow {
+    color: var(--blue);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+h2 {
+    font-family: "Plus Jakarta Sans";
+    font-size: 34px;
+    line-height: 1.2;
+    margin-top: 8px;
+}
+
+.section-heading > p {
+    max-width: 370px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-panel {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+
+    gap: 10px;
+
+    padding: 15px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
+
+    margin-bottom: 25px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    padding: 0 12px;
+}
+
+.search-box span {
+    color: #7b8493;
+}
+
+.search-box input {
+    width: 100%;
+
+    border: 0;
+    outline: 0;
+
+    padding: 11px;
+
+    font-size: 12px;
+}
+
+.search-panel select {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    padding: 0 10px;
+
+    outline: none;
+
+    color: #667085;
+
+    background: white;
+
+    font-size: 11px;
+}
+
+/* =========================
+   SCHOLARSHIP CARDS
+========================= */
+
+.scholarship-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+}
+
+.scholarship-card {
+    background: white;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    padding: 22px;
+
+    transition: .25s;
+}
+
+.scholarship-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(11,28,48,.08);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-icon {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+}
+
+.blue-bg {
+    background: #e7eeff;
+}
+
+.teal-bg {
+    background: #e0f7f2;
+}
+
+.purple-bg {
+    background: #eee8ff;
+}
+
+.status {
+    font-size: 9px;
+    padding: 5px 9px;
+    border-radius: 20px;
+}
+
+.status.open {
+    background: #e4f7ed;
+    color: #17844a;
+}
+
+.scholarship-card h3 {
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.scholarship-card p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.amount {
+    color: var(--blue);
+
+    font-family: "Plus Jakarta Sans";
+
+    font-size: 24px;
+
+    margin: 15px 0;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+
+    color: #7b8493;
+
+    font-size: 10px;
+
+    padding-top: 12px;
+
+    border-top: 1px solid var(--border);
+}
+
+.text-button {
+    border: 0;
+    background: none;
+
+    color: var(--blue);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    margin-top: 18px;
+
+    cursor: pointer;
+}
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+.center-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.center-heading p {
+    color: var(--muted);
+    font-size: 13px;
+    max-width: 600px;
+    margin: 10px auto;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+
+.step {
+    text-align: center;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    padding: 25px 18px;
+
+    position: relative;
+}
+
+.step-number {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+
+    color: #c2c8d2;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.step-icon {
+    width: 55px;
+    height: 55px;
+
+    display: grid;
+    place-items: center;
+
+    margin: auto;
+
+    background: #e7eeff;
+
+    border-radius: 14px;
+
+    font-size: 20px;
+}
+
+.step h3 {
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.step p {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 8px;
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+}
+
+.feature-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 24px;
+}
+
+.feature-icon {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    background: #e7eeff;
+
+    color: var(--blue);
+
+    border-radius: 10px;
+
+    font-size: 18px;
+}
+
+.feature-card h3 {
+    font-family: "Plus Jakarta Sans";
+    font-size: 15px;
+    margin: 15px 0 7px;
+}
+
+.feature-card p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard-section {
+    background: #f8f9ff;
+}
+
+.full-dashboard {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: 0 20px 50px rgba(11,28,48,.08);
+}
+
+.dashboard-sidebar {
+    background: #f8f9ff;
+    border-right: 1px solid var(--border);
+
+    padding: 20px 13px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.dash-brand {
+    color: var(--blue);
+    font-weight: 700;
+    padding: 8px 10px 20px;
+}
+
+.dashboard-sidebar a {
+    color: #697386;
+    padding: 10px;
+
+    font-size: 11px;
+
+    border-radius: 8px;
+}
+
+.dashboard-sidebar a.selected {
+    background: #dbe4ff;
+    color: var(--blue);
+    font-weight: 700;
+}
+
+.dashboard-content {
+    padding: 30px;
+}
+
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dash-header small {
+    color: #8b92a0;
+    font-size: 9px;
+}
+
+.dash-header h3 {
+    font-family: "Plus Jakarta Sans";
+    font-size: 22px;
+}
+
+.dash-user {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    background: var(--blue);
+    color: white;
+
+    display: grid;
+    place-items: center;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+
+    margin: 25px 0;
+}
+
+.dashboard-stats > div {
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    padding: 14px;
+}
+
+.dashboard-stats small {
+    color: #7d8492;
+    display: block;
+    font-size: 9px;
+}
+
+.dashboard-stats strong {
+    font-family: "Plus Jakarta Sans";
+    font-size: 24px;
+}
+
+.dashboard-stats span {
+    color: #258653;
+    font-size: 9px;
+}
+
+.application-table {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table-title {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 15px;
+}
+
+.table-title h4 {
+    font-family: "Plus Jakarta Sans";
+}
+
+.table-title button {
+    border: 0;
+    background: none;
+    color: var(--blue);
+    font-size: 11px;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+
+    padding: 13px 15px;
+
+    border-top: 1px solid var(--border);
+
+    font-size: 11px;
+}
+
+.table-head {
+    background: #fafbfc;
+    color: #8a91a0;
+    font-weight: 600;
+}
+
+.status-review {
+    color: #996100;
+}
+
+.status-approved {
+    color: #17844a;
+}
+
+.status-submitted {
+    color: var(--blue);
+}
+
+/* =========================
+   BENEFITS
+========================= */
+
+.benefits-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 70px;
+}
+
+.benefit-illustration {
+    min-height: 380px;
+
+    background: #e9efff;
+
+    border-radius: 25px;
+
+    display: grid;
+    place-items: center;
+
+    position: relative;
+}
+
+.illustration-card {
+    width: 290px;
+    height: 220px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow: 0 25px 50px rgba(11,28,48,.12);
+
+    padding: 18px;
+}
+
+.illustration-avatar {
+    width: 70px;
+    height: 70px;
+
+    background: #dbe4ff;
+
+    border-radius: 18px;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 38px;
+}
+
+.success-bubble {
+    position: absolute;
+
+    bottom: 25px;
+    left: 40px;
+
+    background: #e4f7ed;
+    color: #17844a;
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.benefit-copy p {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 14px 0;
+}
+
+.benefit-copy ul {
+    list-style: none;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 9px;
+
+    margin: 20px 0;
+}
+
+.benefit-copy li {
+    color: #596273;
+    font-size: 12px;
+}
+
+.benefit-copy li::before {
+    content: "✓";
+    color: #1e9a58;
+    font-weight: bold;
+    margin-right: 7px;
+}
+
+/* =========================
+   ADMIN
+========================= */
+
+.admin-section {
+    background: #eef3ff;
+
+    padding: 80px 25px;
+}
+
+.admin-grid {
+    max-width: 1050px;
+    margin: 35px auto;
+
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 16px;
+}
+
+.admin-card {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    padding: 24px;
+}
+
+.admin-card h3 {
+    font-family: "Plus Jakarta Sans";
+    margin-bottom: 8px;
+}
+
+.admin-card p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.center-action {
+    text-align: center;
+}
+
+/* =========================
+   TESTIMONIALS
+========================= */
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+}
+
+.testimonial-grid article {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    padding: 24px;
+}
+
+.quote {
+    font-family: Georgia;
+    font-size: 42px;
+    color: #9ba9db;
+}
+
+.testimonial-grid p {
+    color: #5c6574;
+    font-size: 13px;
+
+    margin: 10px 0 20px;
+}
+
+.testimonial-grid strong {
+    display: block;
+    font-size: 13px;
+}
+
+.testimonial-grid span {
+    color: #8a91a0;
+    font-size: 10px;
+}
+
+/* =========================
+   FAQ
+========================= */
+
+.faq-section {
+    max-width: 900px;
+}
+
+.faq-list {
+    border-top: 1px solid var(--border);
+    margin-top: 30px;
+}
+
+details {
+    background: white;
+
+    border-bottom: 1px solid var(--border);
+
+    padding: 18px 4px;
+}
+
+summary {
+    cursor: pointer;
+
+    list-style: none;
+
+    font-weight: 600;
+    font-size: 14px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::after {
+    content: "+";
+    color: var(--blue);
+    font-size: 20px;
+}
+
+details[open] summary::after {
+    content: "−";
+}
+
+details p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    padding: 12px 30px 3px 0;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta-section {
+    max-width: 1130px;
+
+    margin: 40px auto 80px;
+
+    border-radius: 24px;
+
+    padding: 55px 60px;
+
+    background: linear-gradient(
+        120deg,
+        #004ac6,
+        #006b8e
+    );
+
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 30px;
+}
+
+.cta-section h2 {
+    max-width: 650px;
+}
+
+.cta-section p {
+    max-width: 600px;
+
+    color: #dceaff;
+
+    margin-top: 10px;
+
+    font-size: 14px;
+}
+
+.cta-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background: #0b1c30;
+
+    color: #d9e0ea;
+
+    padding: 60px 5vw 25px;
+}
+
+.footer-main {
+    max-width: 1180px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+
+    gap: 45px;
+}
+
+.footer-brand p {
+    color: #8f9baa;
+
+    font-size: 12px;
+
+    max-width: 280px;
+
+    margin-top: 15px;
+}
+
+.footer h4 {
+    color: white;
+    font-size: 12px;
+
+    margin-bottom: 14px;
+}
+
+.footer-main a {
+    display: block;
+
+    color: #8f9baa;
+
+    font-size: 11px;
+
+    margin: 9px 0;
+}
+
+.footer-bottom {
+    max-width: 1180px;
+
+    margin: 45px auto 0;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255,255,255,.1);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #718093;
+
+    font-size: 10px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px) {
+
+    .nav-links,
+    .nav-actions {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .navbar {
+        height: 68px;
+    }
+
+    .navbar.open .nav-links {
+        display: flex;
+
+        position: absolute;
+
+        top: 68px;
+        left: 0;
+        right: 0;
+
+        background: white;
+
+        padding: 20px;
+
+        flex-direction: column;
+
+        gap: 16px;
+
+        border-bottom: 1px solid var(--border);
+    }
+
+    .navbar.open .nav-actions {
+        display: flex;
+
+        position: absolute;
+
+        top: 260px;
+
+        left: 20px;
+        right: 20px;
+
+        background: white;
+
+        padding: 10px 20px 20px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-copy {
+        margin: auto;
+    }
+
+    .hero p {
+        margin: 20px auto;
+    }
+
+    .hero-actions,
+    .trust-row {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        margin-top: 15px;
+    }
+
+    .stats-section {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .section-heading {
+        display: block;
+    }
+
+    .section-heading > p {
+        margin-top: 12px;
+    }
+
+    .search-panel {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .search-box {
+        grid-column: 1/-1;
+    }
+
+    .search-panel .btn {
+        grid-column: 1/-1;
+    }
+
+    .steps {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .full-dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-sidebar {
+        display: none;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .benefits-section {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-grid,
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-section {
+        margin: 25px;
+        padding: 40px 30px;
+
+        display: block;
+    }
+
+    .cta-actions {
+        margin-top: 25px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width:600px) {
+
+    .hero {
+        padding: 40px 16px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .trust-row {
+        flex-wrap: wrap;
+    }
+
+    .dashboard-window {
+        width: 100%;
+    }
+
+    .mini-dashboard {
+        grid-template-columns: 70px 1fr;
+    }
+
+    .mini-dashboard aside span {
+        font-size: 7px;
+    }
+
+    .mini-main {
+        padding: 13px;
+    }
+
+    .scholarship-preview button {
+        display: none;
+    }
+
+    .stats-section {
+        grid-template-columns: 1fr 1fr;
+        padding: 10px 16px 50px;
+    }
+
+    .section {
+        padding: 65px 16px;
+    }
+
+    h2 {
+        font-size: 27px;
+    }
+
+    .scholarship-grid,
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box {
+        grid-column: auto;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-content {
+        padding: 17px;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .table-row {
+        font-size: 9px;
+        padding: 11px;
+    }
+
+    .benefit-copy ul {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-section {
+        margin: 20px 16px 60px;
+    }
+
+    .cta-actions {
+        flex-direction: column;
+    }
+
+    .footer {
+        padding: 45px 20px 20px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-bottom {
+        display: block;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar" id="navbar">
+
+    <a href="#home" class="brand">
+
+        <span class="brand-icon">🎓</span>
+
+        <span>
+            <strong>ScholarEase</strong>
+            <small>College Scholarship Management</small>
+        </span>
+
+    </a>
+
+    <button class="menu-toggle" id="menuButton">
+        ☰
+    </button>
+
+    <nav class="nav-links">
+
+        <a href="#home">Home</a>
+
+        <a href="#scholarships">
+            Scholarships
+        </a>
+
+        <a href="#how">
+            How It Works
+        </a>
+
+        <a href="#features">
+            Features
+        </a>
+
+        <a href="#faq">
+            FAQ
+        </a>
+
+    </nav>
+
+    <div class="nav-actions">
+
+        <a href="#" class="btn btn-outline">
+            Login
+        </a>
+
+        <a href="#scholarships" class="btn btn-primary">
+            Get Started
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-copy">
+
+        <div class="pill">
+            🎓
+            Simplifying College Scholarships
+        </div>
+
+        <h1>
+            Find the Right Scholarship.
+            <span>Build Your Future.</span>
+        </h1>
+
+        <p>
+            Discover scholarships, apply online, manage your documents,
+            and track your application status — all in one simple platform.
+        </p>
+
+        <div class="hero-actions">
+
+            <a href="#scholarships"
+               class="btn btn-primary btn-large">
+
+                Explore Scholarships →
+
+            </a>
+
+            <a href="#how"
+               class="btn btn-outline btn-large">
+
+                How It Works
+
+            </a>
+
+        </div>
+
+        <div class="trust-row">
+
+            <span>✓ Built for students</span>
+
+            <i></i>
+
+            <span>✓ Secure applications</span>
+
+            <i></i>
+
+            <span>✓ Easy tracking</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- Dashboard Preview -->
+
+    <div class="hero-visual">
+
+        <div class="dashboard-window">
+
+            <div class="window-top">
+
+                <div class="window-dots">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </div>
+
+                Scholarship Dashboard
+
+                <span class="avatar">A</span>
+
+            </div>
+
+
+            <div class="mini-dashboard">
+
+                <aside>
+
+                    <div class="mini-logo">
+                        🎓
+                    </div>
+
+                    <span class="active">
+                        Dashboard
+                    </span>
+
+                    <span>
+                        Scholarships
+                    </span>
+
+                    <span>
+                        Applications
+                    </span>
+
+                    <span>
+                        Documents
+                    </span>
+
+                    <span>
+                        Notifications
+                    </span>
+
+                </aside>
+
+
+                <div class="mini-main">
+
+                    <div class="mini-welcome">
+
+                        <div>
+
+                            <small>
+                                STUDENT DASHBOARD
+                            </small>
+
+                            <h3>
+                                Welcome back!
+                            </h3>
+
+                        </div>
+
+                        <span class="mini-profile">
+                            A
+                        </span>
+
+                    </div>
+
+
+                    <div class="mini-stats">
+
+                        <div>
+                            <small>Available</small>
+                            <strong>24</strong>
+                        </div>
+
+                        <div>
+                            <small>Applications</small>
+                            <strong>5</strong>
+                        </div>
+
+                        <div>
+                            <small>Approved</small>
+                            <strong>2</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="scholarship-preview">
+
+                        <div class="preview-icon">
+                            🏆
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Featured Scholarship
+                            </small>
+
+                            <strong>
+                                Merit Excellence Scholarship
+                            </strong>
+
+                            <span>
+                                CGPA 8.0+ · ₹50,000
+                            </span>
+
+                        </div>
+
+                        <button>
+                            Apply
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="float-card submitted">
+            ✓ Application Submitted
+        </div>
+
+        <div class="float-card verified">
+            ✓ Document Verified
+        </div>
+
+        <div class="float-card new-scholarship">
+            ★ New Scholarship Available
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     STATISTICS
+========================= -->
+
+<section class="stats-section">
+
+    <div class="stat-card">
+
+        <span class="stat-icon blue">
+            ▣
+        </span>
+
+        <strong>
+            500+
+        </strong>
+
+        <p>
+            Scholarships Listed
+        </p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <span class="stat-icon teal">
+            ⌁
+        </span>
+
+        <strong>
+            2,500+
+        </strong>
+
+        <p>
+            Student Applications
+        </p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <span class="stat-icon orange">
+            ✓
+        </span>
+
+        <strong>
+            95%
+        </strong>
+
+        <p>
+            Application Tracking
+        </p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <span class="stat-icon purple">
+            ▦
+        </span>
+
+        <strong>
+            50+
+        </strong>
+
+        <p>
+            College Departments
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SCHOLARSHIPS
+========================= -->
+
+<section class="section" id="scholarships">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="eyebrow">
+                SCHOLARSHIP DISCOVERY
+            </span>
+
+            <h2>
+                Discover Scholarships That Match You
+            </h2>
+
+        </div>
+
+        <p>
+            Find opportunities based on your course,
+            academic performance, category and eligibility.
+        </p>
+
+    </div>
+
+
+    <!-- Search -->
+
+    <div class="search-panel">
+
+        <label class="search-box">
+
+            <span>
+                ⌕
+            </span>
+
+            <input
+                id="searchInput"
+                type="search"
+                placeholder="Search scholarships..."
+            >
+
+        </label>
+
+
+        <select id="courseFilter">
+
+            <option value="">
+                Course / Department
+            </option>
+
+            <option value="Computer Science">
+                Computer Science
+            </option>
+
+            <option value="Engineering">
+                Engineering
+            </option>
+
+            <option value="Business">
+                Business
+            </option>
+
+        </select>
+
+
+        <select>
+
+            <option>
+                Scholarship Type
+            </option>
+
+            <option>
+                Merit
+            </option>
+
+            <option>
+                Need-Based
+            </option>
+
+            <option>
+                Women in Technology
+            </option>
+
+        </select>
+
+
+        <button
+            class="btn btn-primary"
+            id="searchButton">
+
+            Search
+
+        </button>
+
+    </div>
+
+
+    <!-- Cards -->
+
+    <div class="scholarship-grid"
+         id="scholarshipGrid">
+
+
+        <article
+            class="scholarship-card"
+            data-course="Computer Science"
+            data-search="merit excellence scholarship computer science merit">
+
+            <div class="card-top">
+
+                <span class="card-icon blue-bg">
+                    🏆
+                </span>
+
+                <span class="status open">
+                    Open
+                </span>
+
+            </div>
+
+            <h3>
+                Merit Excellence Scholarship
+            </h3>
+
+            <p>
+                College Academic Foundation
+            </p>
+
+            <div class="amount">
+                ₹50,000
+            </div>
+
+            <div class="card-meta">
+
+                <span>
+                    CGPA 8.0+
+                </span>
+
+                <span>
+                    30 Oct 2026
+                </span>
+
+            </div>
+
+            <button class="text-button">
+                View Details →
+            </button>
+
+        </article>
+
+
+        <article
+            class="scholarship-card"
+            data-course="Engineering"
+            data-search="need based student support engineering need">
+
+            <div class="card-top">
+
+                <span class="card-icon teal-bg">
+                    ♥
+                </span>
+
+                <span class="status open">
+                    Open
+                </span>
+
+            </div>
+
+            <h3>
+                Need-Based Student Support
+            </h3>
+
+            <p>
+                Student Welfare Foundation
+            </p>
+
+            <div class="amount">
+                ₹30,000
+            </div>
+
+            <div class="card-meta">
+
+                <span>
+                    Income &lt; ₹3 Lakh
+                </span>
+
+                <span>
+                    15 Nov 2026
+                </span>
+
+            </div>
+
+            <button class="text-button">
+                View Details →
+            </button>
+
+        </article>
+
+
+        <article
+            class="scholarship-card"
+            data-course="Computer Science"
+            data-search="women technology scholarship computer science women">
+
+            <div class="card-top">
+
+                <span class="card-icon purple-bg">
+                    ✦
+                </span>
+
+                <span class="status open">
+                    Open
+                </span>
+
+            </div>
+
+            <h3>
+                Women in Technology Scholarship
+            </h3>
+
+            <p>
+                Future Tech Foundation
+            </p>
+
+            <div class="amount">
+                ₹40,000
+            </div>
+
+            <div class="card-meta">
+
+                <span>
+                    Computer Science / IT
+                </span>
+
+                <span>
+                    20 Nov 2026
+                </span>
+
+            </div>
+
+            <button class="text-button">
+                View Details →
+            </button>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HOW IT WORKS
+========================= -->
+
+<section class="section light-section"
+         id="how">
+
+    <div class="center-heading">
+
+        <span class="eyebrow">
+            SIMPLE PROCESS
+        </span>
+
+        <h2>
+            How ScholarEase Works
+        </h2>
+
+        <p>
+            From discovery to approval, manage your complete
+            scholarship journey in four simple steps.
+        </p>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <span class="step-number">
+                01
+            </span>
+
+            <div class="step-icon">
+                👤
+            </div>
+
+            <h3>
+                Create Your Profile
+            </h3>
+
+            <p>
+                Add your academic, personal and
+                eligibility information.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <span class="step-number">
+                02
+            </span>
+
+            <div class="step-icon">
+                ⌕
+            </div>
+
+            <h3>
+                Find Scholarships
+            </h3>
+
+            <p>
+                Explore scholarships that match
+                your profile.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <span class="step-number">
+                03
+            </span>
+
+            <div class="step-icon">
+                ↑
+            </div>
+
+            <h3>
+                Apply & Upload
+            </h3>
+
+            <p>
+                Submit your application and upload
+                required documents.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <span class="step-number">
+                04
+            </span>
+
+            <div class="step-icon">
+                ✓
+            </div>
+
+            <h3>
+                Track Application
+            </h3>
+
+            <p>
+                Monitor your application from
+                submission to final decision.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section class="section" id="features">
+
+    <div class="center-heading">
+
+        <span class="eyebrow">
+            PLATFORM FEATURES
+        </span>
+
+        <h2>
+            Everything You Need
+        </h2>
+
+        <p>
+            ScholarEase makes the entire scholarship
+            process simple and organized.
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔎
+            </div>
+
+            <h3>
+                Smart Scholarship Search
+            </h3>
+
+            <p>
+                Search and filter scholarships based
+                on eligibility and academic profile.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📄
+            </div>
+
+            <h3>
+                Document Management
+            </h3>
+
+            <p>
+                Store and manage certificates,
+                mark sheets and required documents.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📊
+            </div>
+
+            <h3>
+                Application Tracking
+            </h3>
+
+            <p>
+                Track submitted, reviewed and
+                approved scholarship applications.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔔
+            </div>
+
+            <h3>
+                Notifications
+            </h3>
+
+            <p>
+                Receive updates about deadlines,
+                application status and new scholarships.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔐
+            </div>
+
+            <h3>
+                Secure Data
+            </h3>
+
+            <p>
+                Student information and documents
+                are handled securely.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📱
+            </div>
+
+            <h3>
+                Mobile Friendly
+            </h3>
+
+            <p>
+                Access your scholarship dashboard
+                from desktop, tablet or mobile.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     STUDENT DASHBOARD
+========================= -->
+
+<section class="section dashboard-section">
+
+    <div class="center-heading">
+
+        <span class="eyebrow">
+            STUDENT DASHBOARD
+        </span>
+
+        <h2>
+            Manage Everything From One Place
+        </h2>
+
+        <p>
+            Keep track of your applications,
+            scholarships and documents.
+        </p>
+
+    </div>
+
+
+    <div class="full-dashboard">
+
+        <aside class="dashboard-sidebar">
+
+            <div class="dash-brand">
+                🎓 ScholarEase
+            </div>
+
+            <a class="selected">
+                Dashboard
+            </a>
+
+            <a>
+                Scholarships
+            </a>
+
+            <a>
+                Applications
+            </a>
+
+            <a>
+                Documents
+            </a>
+
+            <a>
+                Notifications
+            </a>
+
+        </aside>
+
+
+        <div class="dashboard-content">
+
+            <div class="dash-header">
+
+                <div>
+
+                    <small>
+                        STUDENT DASHBOARD
+                    </small>
+
+                    <h3>
+                        Welcome, Aanya!
+                    </h3>
+
+                </div>
+
+                <div class="dash-user">
+                    A
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-stats">
+
+                <div>
+
+                    <small>
+                        Available
+                    </small>
+
+                    <strong>
+                        24
+                    </strong>
+
+                    <span>
+                        Scholarships
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        Applications
+                    </small>
+
+                    <strong>
+                        5
+                    </strong>
+
+                    <span>
+                        Submitted
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        Under Review
+                    </small>
+
+                    <strong>
+                        2
+                    </strong>
+
+                    <span>
+                        Applications
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        Approved
+                    </small>
+
+                    <strong>
+                        2
+                    </strong>
+
+                    <span>
+                        Applications
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="application-table">
+
+                <div class="table-title">
+
+                    <h4>
+                        Recent Applications
+                    </h4>
+
+                    <button>
+                        View All
+                    </button>
+
+                </div>
+
+
+                <div class="table-row table-head">
+
+                    <span>
+                        Scholarship
+                    </span>
+
+                    <span>
+                        Date
+                    </span>
+
+                    <span>
+                        Status
+                    </span>
+
+                </div>
+
+
+                <div class="table-row">
+
+                    <span>
+                        Merit Excellence
+                    </span>
+
+                    <span>
+                        20 Sep
+                    </span>
+
+                    <span class="status-approved">
+                        Approved
+                    </span>
+
+                </div>
+
+
+                <div class="table-row">
+
+                    <span>
+                        Student Support
+                    </span>
+
+                    <span>
+                        18 Sep
+                    </span>
+
+                    <span class="status-review">
+                        Under Review
+                    </span>
+
+                </div>
+
+
+                <div class="table-row">
+
+                    <span>
+                        Women in Technology
+                    </span>
+
+                    <span>
+                        15 Sep
+                    </span>
+
+                    <span class="status-submitted">
+                        Submitted
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BENEFITS
+========================= -->
+
+<section class="section">
+
+    <div class="benefits-section">
+
+        <div class="benefit-illustration">
+
+            <div class="illustration-card">
+
+                <div class="illustration-avatar">
+                    👩‍🎓
+                </div>
+
+            </div>
+
+            <div class="success-bubble">
+                ✓ Application Approved
+            </div>
+
+        </div>
+
+
+        <div class="benefit-copy">
+
+            <span class="eyebrow">
+                WHY SCHOLAREASE
+            </span>
+
+            <h2>
+                Designed Around Students
+            </h2>
+
+            <p>
+                ScholarEase reduces the complexity of scholarship
+                applications and helps students stay organized.
+            </p>
+
+            <ul>
+
+                <li>
+                    Personalized scholarship matching
+                </li>
+
+                <li>
+                    Simple online applications
+                </li>
+
+                <li>
+                    Centralized document storage
+                </li>
+
+                <li>
+                    Real-time application tracking
+                </li>
+
+                <li>
+                    Deadline reminders
+                </li>
+
+                <li>
+                    Easy-to-use dashboard
+                </li>
+
+            </ul>
+
+            <a href="#scholarships"
+               class="btn btn-primary">
+
+                Start Exploring
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ADMIN
+========================= -->
+
+<section class="admin-section">
+
+    <div class="center-heading">
+
+        <span class="eyebrow">
+            ADMIN MANAGEMENT
+        </span>
+
+        <h2>
+            Powerful Tools for College Administrators
+        </h2>
+
+        <p>
+            Manage scholarships, verify applications and
+            monitor student activity efficiently.
+        </p>
+
+    </div>
+
+
+    <div class="admin-grid">
+
+        <div class="admin-card">
+
+            <h3>
+                Scholarship Management
+            </h3>
+
+            <p>
+                Create, update and publish scholarship
+                opportunities.
+            </p>
+
+        </div>
+
+
+        <div class="admin-card">
+
+            <h3>
+                Application Review
+            </h3>
+
+            <p>
+                Review student applications and verify
+                submitted documents.
+            </p>
+
+        </div>
+
+
+        <div class="admin-card">
+
+            <h3>
+                Reports & Analytics
+            </h3>
+
+            <p>
+                Monitor applications, approvals and
+                scholarship statistics.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="center-action">
+
+        <a href="#" class="btn btn-primary">
+            Admin Portal
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TESTIMONIALS
+========================= -->
+
+<section class="section">
+
+    <div class="center-heading">
+
+        <span class="eyebrow">
+            STUDENT FEEDBACK
+        </span>
+
+        <h2>
+            What Students Say
+        </h2>
+
+    </div>
+
+
+    <div class="testimonial-grid">
+
+        <article>
+
+            <div class="quote">
+                “
+            </div>
+
+            <p>
+                ScholarEase made it much easier for me to
+                find scholarships that matched my course.
+            </p>
+
+            <strong>
+                Priya S.
+            </strong>
+
+            <span>
+                Computer Science Student
+            </span>
+
+        </article>
+
+
+        <article>
+
+            <div class="quote">
+                “
+            </div>
+
+            <p>
+                I can now track all my applications without
+                checking different websites.
+            </p>
+
+            <strong>
+                Rahul K.
+            </strong>
+
+            <span>
+                Engineering Student
+            </span>
+
+        </article>
+
+
+        <article>
+
+            <div class="quote">
+                “
+            </div>
+
+            <p>
+                Uploading documents and keeping track of
+                deadlines is very simple.
+            </p>
+
+            <strong>
+                Anjali M.
+            </strong>
+
+            <span>
+                Business Student
+            </span>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FAQ
+========================= -->
+
+<section class="section faq-section"
+         id="faq">
+
+    <div class="center-heading">
+
+        <span class="eyebrow">
+            FAQ
+        </span>
+
+        <h2>
+            Frequently Asked Questions
+        </h2>
+
+    </div>
+
+
+    <div class="faq-list">
+
+        <details>
+
+            <summary>
+                What is ScholarEase?
+            </summary>
+
+            <p>
+                ScholarEase is a college scholarship management
+                platform that helps students discover scholarships,
+                apply online and track applications.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Can students track their applications?
+            </summary>
+
+            <p>
+                Yes. Students can view submitted, under-review,
+                approved and rejected applications from their dashboard.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Can administrators manage scholarships?
+            </summary>
+
+            <p>
+                Yes. Administrators can create scholarships,
+                review applications, verify documents and generate reports.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Is ScholarEase mobile friendly?
+            </summary>
+
+            <p>
+                Yes. The interface is responsive and works on
+                desktop, tablet and mobile devices.
+            </p>
+
+        </details>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta-section">
+
+    <div>
+
+        <span class="eyebrow" style="color:#cbd8ff">
+            START YOUR JOURNEY
+        </span>
+
+        <h2>
+            Your Next Opportunity Could Be One Search Away.
+        </h2>
+
+        <p>
+            Explore scholarships and take the next step
+            toward achieving your educational goals.
+        </p>
+
+    </div>
+
+
+    <div class="cta-actions">
+
+        <a href="#scholarships"
+           class="btn btn-primary"
+           style="background:white;color:#004ac6">
+
+            Explore Scholarships
+
+        </a>
+
+        <a href="#home"
+           class="btn btn-outline"
+           style="background:transparent;color:white;border-color:white">
+
+            Back to Top
+
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+
+            <a href="#home" class="brand">
+
+                <span class="brand-icon">
+                    🎓
+                </span>
+
+                <span>
+                    <strong>
+                        ScholarEase
+                    </strong>
+
+                    <small>
+                        College Scholarship Management
+                    </small>
+                </span>
+
+            </a>
+
+            <p>
+                Making scholarship discovery and application
+                management simple for students and colleges.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Platform
+            </h4>
+
+            <a href="#scholarships">
+                Scholarships
+            </a>
+
+            <a href="#features">
+                Features
+            </a>
+
+            <a href="#how">
+                How It Works
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Students
+            </h4>
+
+            <a href="#">
+                Student Login
+            </a>
+
+            <a href="#">
+                Create Account
+            </a>
+
+            <a href="#">
+                Help Center
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                College
+            </h4>
+
+            <a href="#">
+                Admin Portal
+            </a>
+
+            <a href="#">
+                College Login
+            </a>
+
+            <a href="#">
+                Contact Us
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 ScholarEase. All rights reserved.
+        </span>
+
+        <span>
+            College Scholarship Management System
+        </span>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const navbar =
+    document.getElementById("navbar");
+
+menuButton.addEventListener("click", function () {
+
+    navbar.classList.toggle("open");
+
+});
+
+
+/* =========================
+   CLOSE MOBILE MENU
+========================= */
+
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            navbar.classList.remove("open");
+
+        });
+
+    });
+
+
+/* =========================
+   SCHOLARSHIP SEARCH
+========================= */
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const courseFilter =
+    document.getElementById("courseFilter");
+
+const searchButton =
+    document.getElementById("searchButton");
+
+const cards =
+    document.querySelectorAll(".scholarship-card");
+
+
+function searchScholarships() {
+
+    const keyword =
+        searchInput.value
+        .toLowerCase()
+        .trim();
+
+    const course =
+        courseFilter.value;
+
+
+    cards.forEach(function(card) {
+
+        const text =
+            card.dataset.search.toLowerCase();
+
+        const cardCourse =
+            card.dataset.course;
+
+
+        const keywordMatch =
+            keyword === "" ||
+            text.includes(keyword);
+
+
+        const courseMatch =
+            course === "" ||
+            cardCourse === course;
+
+
+        if (keywordMatch && courseMatch) {
+
+            card.style.display = "";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+searchButton.addEventListener(
+    "click",
+    searchScholarships
+);
+
+
+searchInput.addEventListener(
+    "input",
+    searchScholarships
+);
+
+
+courseFilter.addEventListener(
+    "change",
+    searchScholarships
+);
+
+
+/* =========================
+   SCHOLARSHIP DETAILS
+========================= */
+
+document
+    .querySelectorAll(".text-button")
+    .forEach(function(button) {
+
+        button.addEventListener("click", function() {
+
+            const card =
+                button.closest(".scholarship-card");
+
+            const scholarshipName =
+                card.querySelector("h3").innerText;
+
+
+            alert(
+                scholarshipName +
+                "\n\nScholarship details and application page can be connected here."
+            );
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
