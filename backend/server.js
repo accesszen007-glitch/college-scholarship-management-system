@@ -1,34 +1,48 @@
 const express = require("express");
 const cors = require("cors");
-const path = require("path");
-require("dotenv").config();
-
-const authRoutes = require("./routes/authRoutes");
-const scholarshipRoutes = require("./routes/scholarshipRoutes");
-const applicationRoutes = require("./routes/applicationRoutes");
-const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
 
+const PORT = 5000;
+
+
+/* =========================================================
+   Middleware
+   ========================================================= */
+
 app.use(cors());
+
 app.use(express.json());
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+app.use(
+    express.urlencoded({
+        extended: true
+    })
+);
+
+
+/* =========================================================
+   Health Check
+   ========================================================= */
 
 app.get("/", (req, res) => {
-  res.json({ message: "Scholarship Portal API is running" });
+
+    res.json({
+        success: true,
+        message: "ScholarEase API is running successfully"
+    });
+
 });
 
-app.use("/api/auth", authRoutes);
-app.use("/api/scholarships", scholarshipRoutes);
-app.use("/api/applications", applicationRoutes);
-app.use("/api/admin", adminRoutes);
 
-app.use((err, req, res, next) => {
-  console.error(err.message);
-  res.status(500).json({ message: "Internal server error" });
-});
+/* =========================================================
+   Server
+   ========================================================= */
 
-const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+
+    console.log(
+        `ScholarEase server running on http://localhost:${PORT}`
+    );
+
 });
