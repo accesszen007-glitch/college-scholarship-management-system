@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="logo">
+            ScholarEase Admin
+        </div>
+
+        <nav>
+
+            <a href="admin-dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="login.html">
+                Logout
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main class="container">
+
+        <h1>Admin Dashboard</h1>
+
+        <p>
+            Manage scholarship applications and students.
+        </p>
+
+
+        <div class="scholarship-grid">
+
+            <div class="scholarship-card">
+
+                <h2>Total Applications</h2>
+
+                <p>125</p>
+
+            </div>
+
+
+            <div class="scholarship-card">
+
+                <h2>Pending Applications</h2>
+
+                <p>40</p>
+
+            </div>
+
+
+            <div class="scholarship-card">
+
+                <h2>Approved Applications</h2>
+
+                <p>70</p>
+
+            </div>
+
+        </div>
+
+
+        <br>
+
+
+        <h2>Recent Applications</h2>
+
+        <br>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Student</th>
+                    <th>Scholarship</th>
+                    <th>Status</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+
+                    <td>A001</td>
+
+                    <td>Student One</td>
+
+                    <td>Merit Scholarship</td>
+
+                    <td>Pending</td>
+
+                    <td>
+                        <button>
+                            Review
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>A002</td>
+
+                    <td>Student Two</td>
+
+                    <td>Need-Based Scholarship</td>
+
+                    <td>Pending</td>
+
+                    <td>
+                        <button>
+                            Review
+                        </button>
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </main>
+
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
