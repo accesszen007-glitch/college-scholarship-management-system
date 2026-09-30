@@ -1,0 +1,289 @@
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+.admin-login-page {
+    min-height: calc(100vh - 140px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px 20px;
+
+    background: #f8fafc;
+}
+
+.admin-login-container {
+    width: 100%;
+    max-width: 460px;
+}
+
+.admin-login-card {
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+
+    padding: 40px;
+
+    box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+
+    text-align: center;
+}
+
+.admin-icon {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    border-radius: 16px;
+
+    background: #eff6ff;
+
+    font-size: 30px;
+}
+
+.admin-login-card h1 {
+    margin: 18px 0 8px;
+
+    color: #0f172a;
+
+    font-size: 30px;
+}
+
+.login-description {
+    margin: 0 auto 28px;
+
+    max-width: 350px;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* FORM */
+
+#adminLoginForm {
+    text-align: left;
+}
+
+#adminLoginForm .input-group {
+    margin-bottom: 18px;
+}
+
+#adminLoginForm .input-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #334155;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* PASSWORD */
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper .input {
+    padding-right: 65px;
+}
+
+.password-toggle {
+    position: absolute;
+
+    right: 10px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+    background: transparent;
+
+    color: #2563eb;
+
+    cursor: pointer;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* OPTIONS */
+
+.login-options {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 8px 0 18px;
+
+    font-size: 12px;
+}
+
+.remember-option {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #64748b;
+}
+
+.remember-option input {
+    cursor: pointer;
+}
+
+.forgot-link {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+
+/* MESSAGE */
+
+.login-message {
+    min-height: 20px;
+
+    margin-bottom: 10px;
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+/* BUTTON */
+
+.admin-login-button {
+    width: 100%;
+
+    justify-content: center;
+}
+
+
+/* DIVIDER */
+
+.login-divider {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 28px 0 20px;
+
+    color: #94a3b8;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.login-divider::before,
+.login-divider::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: #e2e8f0;
+}
+
+
+/* SECURITY */
+
+.security-note {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 13px;
+
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    text-align: left;
+}
+
+.security-note span {
+    font-size: 16px;
+}
+
+.security-note p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* BACK */
+
+.back-link {
+    display: inline-block;
+
+    margin-top: 22px;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: #2563eb;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .admin-login-page {
+        padding: 35px 15px;
+    }
+
+    .admin-login-card {
+        padding: 28px 20px;
+    }
+
+    .admin-login-card h1 {
+        font-size: 26px;
+    }
+
+    .login-options {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+}
