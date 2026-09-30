@@ -1,0 +1,553 @@
+/* =========================
+   ADMIN DASHBOARD
+========================= */
+
+.admin-navbar {
+    background: #0f172a;
+    border-bottom: 1px solid #1e293b;
+}
+
+.admin-nav-container {
+    min-height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.admin-logo {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.admin-logo span {
+    margin-left: 7px;
+    padding: 3px 7px;
+
+    border-radius: 5px;
+
+    background: #2563eb;
+
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.admin-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.admin-nav-menu a {
+    color: #cbd5e1;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.admin-nav-menu a:hover,
+.admin-nav-menu a.active {
+    color: #ffffff;
+}
+
+
+/* MAIN */
+
+.admin-dashboard {
+    min-height: calc(100vh - 140px);
+    padding: 40px 0 70px;
+    background: #f8fafc;
+}
+
+
+/* WELCOME */
+
+.admin-welcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    margin-bottom: 30px;
+}
+
+.admin-welcome h1 {
+    margin: 14px 0 6px;
+
+    color: #0f172a;
+    font-size: 32px;
+}
+
+.admin-welcome p {
+    margin: 0;
+    color: #64748b;
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 10px 15px;
+
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+.admin-avatar {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #dbeafe;
+    color: #2563eb;
+
+    font-weight: 700;
+}
+
+.admin-profile strong,
+.admin-profile small {
+    display: block;
+}
+
+.admin-profile strong {
+    color: #334155;
+    font-size: 13px;
+}
+
+.admin-profile small {
+    margin-top: 3px;
+    color: #94a3b8;
+    font-size: 10px;
+}
+
+
+/* STATS */
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+
+    margin-bottom: 30px;
+}
+
+.admin-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 20px;
+
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    font-size: 22px;
+}
+
+.stat-icon.blue {
+    background: #dbeafe;
+}
+
+.stat-icon.green {
+    background: #dcfce7;
+}
+
+.stat-icon.orange {
+    background: #ffedd5;
+}
+
+.stat-icon.red {
+    background: #fee2e2;
+}
+
+.admin-stat-card span,
+.admin-stat-card strong,
+.admin-stat-card small {
+    display: block;
+}
+
+.admin-stat-card span {
+    color: #64748b;
+    font-size: 11px;
+}
+
+.admin-stat-card strong {
+    margin: 3px 0;
+    color: #0f172a;
+    font-size: 25px;
+}
+
+.admin-stat-card small {
+    color: #94a3b8;
+    font-size: 10px;
+}
+
+
+/* SECTIONS */
+
+.dashboard-section {
+    margin-top: 30px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    margin-bottom: 15px;
+}
+
+.section-heading h2 {
+    margin: 0 0 5px;
+    color: #0f172a;
+    font-size: 20px;
+}
+
+.section-heading p {
+    margin: 0;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.view-link {
+    color: #2563eb;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+
+/* QUICK ACTIONS */
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.quick-action {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 17px;
+
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+
+    color: #334155;
+    text-decoration: none;
+}
+
+.quick-action:hover {
+    border-color: #93c5fd;
+    transform: translateY(-2px);
+}
+
+.quick-action div {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: #eff6ff;
+}
+
+.quick-action span {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* TABLE */
+
+.admin-table-wrapper {
+    overflow-x: auto;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    min-width: 750px;
+}
+
+.admin-table th {
+    padding: 14px 18px;
+
+    background: #f8fafc;
+
+    color: #64748b;
+
+    font-size: 10px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.admin-table td {
+    padding: 15px 18px;
+
+    border-top: 1px solid #f1f5f9;
+
+    color: #475569;
+    font-size: 12px;
+}
+
+.student-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.student-avatar {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #eff6ff;
+    color: #2563eb;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.student-cell strong,
+.student-cell small {
+    display: block;
+}
+
+.student-cell strong {
+    color: #334155;
+    font-size: 12px;
+}
+
+.student-cell small {
+    margin-top: 2px;
+    color: #94a3b8;
+    font-size: 10px;
+}
+
+.table-button {
+    padding: 6px 10px;
+
+    border: 1px solid #dbeafe;
+    border-radius: 6px;
+
+    background: #eff6ff;
+    color: #2563eb;
+
+    cursor: pointer;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+/* SCHOLARSHIPS */
+
+.scholarship-admin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.admin-scholarship-card {
+    padding: 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+}
+
+.scholarship-admin-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #94a3b8;
+    font-size: 10px;
+}
+
+.admin-scholarship-card h3 {
+    margin: 18px 0 8px;
+
+    color: #0f172a;
+    font-size: 16px;
+}
+
+.admin-scholarship-card p {
+    min-height: 45px;
+
+    margin: 0 0 15px;
+
+    color: #64748b;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.admin-amount {
+    display: block;
+
+    color: #2563eb;
+    font-size: 21px;
+}
+
+.admin-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 18px;
+    padding-top: 15px;
+
+    border-top: 1px solid #f1f5f9;
+}
+
+.admin-card-footer span {
+    color: #94a3b8;
+    font-size: 10px;
+}
+
+.admin-card-footer button {
+    border: none;
+    background: transparent;
+
+    color: #2563eb;
+
+    cursor: pointer;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* STUDENT OVERVIEW */
+
+.student-overview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.student-overview > div {
+    padding: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+.student-overview strong,
+.student-overview span {
+    display: block;
+}
+
+.student-overview strong {
+    margin-bottom: 5px;
+
+    color: #0f172a;
+    font-size: 25px;
+}
+
+.student-overview span {
+    color: #64748b;
+    font-size: 11px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+
+    .admin-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .scholarship-admin-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .student-overview {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-nav-menu {
+        gap: 15px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .admin-nav-container {
+        padding: 15px;
+        align-items: flex-start;
+    }
+
+    .admin-nav-menu {
+        display: none;
+    }
+
+    .admin-welcome {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-stats,
+    .quick-actions,
+    .scholarship-admin-grid,
+    .student-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-dashboard {
+        padding: 30px 15px 50px;
+    }
+
+}
